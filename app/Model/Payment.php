@@ -9,6 +9,7 @@ class Payment extends AppModel
     'User' => array(
       'className' => 'User',
       'foreignKey' => 'users_id')
+      // 'foreignKey' => 'users_id')
     ); 
   public function beforeSave($options = Array()){
       $this->data[$this->alias]['paid_date'] = date("Y-m-d H:i:s");

@@ -109,7 +109,6 @@ button{
   height: 40px;
   color:white;
   background-color:#03A9F4;
-
 }
 button:hover{
 
@@ -146,8 +145,8 @@ button:hover{
               echo "<p>$logout</p>";
               echo "</div>";
             }?>
-                <input type="email" class="form-control"  name="email_address" placeholder="Email" required autofocus><br>
-                <input type="password" class="form-control"  name="password" placeholder="Password" required><br> <br>
+                <input type="email" class="form-control"  name="data[User][email_address]" placeholder="Email" required autofocus><br>
+                <input type="password" class="form-control"  name="data[User][password]" placeholder="Password" required><br> <br>
                <center> <button class="btn btn-lg btn-primary btn-block" type="submit">
                     Sign in</button></center>
                     <br>

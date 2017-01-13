@@ -52,15 +52,15 @@
                 <!-- user dropdown starts -->
                 <div class="btn-group pull-right">
                     <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" id="dropdownMenu">
-                        <i class="fa fa-user"></i><span class="hidden-sm hidden-xs"> <?php 
+                        <i class="fa fa-user"></i><span class="hidden-sm hidden-xs"> <?php
                         $adminName = $this->Session->read('Admin.email');
                         if(isset($adminName)){echo $adminName;}?></span>
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" role="menu"  aria-labelledby="dropdownMenu">
-                        <li role="presentation"><a class="link" role="menuitem" href="<?php echo $this->webroot;?>profile">Profile</a></li>
+                        <li role="presentation"><a class="link" role="menuitem" href="<?php echo $this->webroot;?>admin/profile">Profile</a></li>
                         <li class="divider"></li>
-                        <li role="presentation"><a class="link" role="menuitem" href="<?php echo $this->webroot;?>logout">Logout</a></li>
+                        <li role="presentation"><a class="link" role="menuitem" href="<?php echo $this->webroot;?>users/logout">Logout</a></li>
                     </ul>
                 </div>
                 <!-- user dropdown ends -->
@@ -69,7 +69,7 @@
         </div>
         <!-- topbar ends -->
         <div class="ch-container">
-            <div class="row">   
+            <div class="row">
                 <!-- left menu starts -->
                 <div class="col-sm-2 col-lg-2">
                     <div class="sidebar-nav">
@@ -85,7 +85,7 @@
                              </li>
                              <li><a class="link" href="<?php echo $this->webroot;?>admin/profile"><span> Profile</span></a>
                              </li>
-                             <li><a class="link" href="<?php echo $this->webroot;?>admin/logout"><span> Log out</span></a>
+                             <li><a class="link" href="<?php echo $this->webroot;?>users/logout"><span> Log out</span></a>
                              </li>
                          </ul>
                      </div>
@@ -136,7 +136,7 @@
     if (!empty($users)){
     $counter = 1;
     foreach ($users as $user):
-    ?> 
+    ?>
     <tr>
         <td><?php echo $counter++;?></td>
         <td><?php echo $user['User']['company_name'];?></td>

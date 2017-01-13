@@ -1,32 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>COSON Licensing Application Portal [CLAP]</title>
- 
-<link href="<?php echo $this->webroot;?>css/bootstrap.min.css" rel="stylesheet">
 
-<link href="<?php echo $this->webroot;?>css/font-awesome.min.css" rel="stylesheet">
+<!-- The styles -->
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+<link rel="stylesheet" href="<?php echo $this->webroot;?>css/bootstrap.min.css">
+<link rel="stylesheet" href="<?php echo $this->webroot;?>css/font-awesome.min.css">
+<link href="<?php echo $this->webroot;?>css/charisma-app.css" rel="stylesheet">
+<link href="<?php echo $this->webroot;?>css/responsive-tables.css" rel="stylesheet">
 <link href="<?php echo $this->webroot;?>css/animate.min.css" rel="stylesheet">
-<link href="<?php echo $this->webroot;?>css/owl.carousel.css" rel="stylesheet">
-<link href="<?php echo $this->webroot;?>css/owl.transitions.css" rel="stylesheet">
-<link href="<?php echo $this->webroot;?>css/prettyPhoto.css" rel="stylesheet">
-<link href="<?php echo $this->webroot;?>css/main.css" rel="stylesheet">
-<link href="<?php echo $this->webroot;?>css/responsive.css" rel="stylesheet">
-<link rel="stylesheet" href="<?php echo $this->webroot;?>css/style.css">
-<script src="<?php echo $this->webroot;?>js/jquery-2.1.1.min.js"></script>
-<script src="<?php echo $this->webroot;?>js/bootstrap.min.js"></script>
-<script src="<?php echo $this->webroot;?>js/moment.js"></script>
-<script src="<?php echo $this->webroot;?>js/moment-with-locales.js"></script>
+<link href="<?php echo $this->webroot;?>css/jquery.iphone.toggle.css" rel="stylesheet">
+<link rel="stylesheet" href="<?php echo $this->webroot;?>css/styleOri.css">
+<link rel="stylesheet" href="<?php echo $this->webroot;?>css/dataTables.bootstrap.css">
+<!-- <link rel="stylesheet" href="<?php echo $this->webroot;?>css/dataTables.jqueryui.min.css"> -->
+
+<!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
-    <![endif]-->
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
 <!-- Favicon and touch icons -->
 <link rel="shortcut icon" href="<?php echo $this->webroot;?>img/favicon-16x16.png">
 
@@ -48,227 +45,194 @@
 
 </head>
 
-<body id="home" class="homepage">
-<header id="header">
-<nav id="main-menu" class="navbar navbar-default navbar-fixed-top" role="banner">
-<div class="container">
-<div class="navbar-header">
-<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-<span class="sr-only">Toggle navigation</span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
+<body style="font-size:14.5px;">
+<!-- topbar starts -->
+<div class="navbar navbar-default" role="navigation">
+
+<div class="navbar-inner">
+<button type="button" class="navbar-toggle pull-left animated flip" data-target="#main">
+<span class="sr-only">Toggle navigation</span>Menu <i class="fa fa-bars"></i>
 </button>
-<a class="navbar-brand" href="<?php echo $this->webroot;?>"><img src="<?php echo $this->webroot;?>img/162by36.png" alt="coson-logo"></a>
-</div>
-<div class="collapse navbar-collapse navbar-right">
-<ul class="nav navbar-nav">
-<li class="scroll active"><a href="#home">Home</a></li>
-<?php if($this->Session->check('User.email_address')){?>
-<li>
-<a href="<?php echo $this->webroot;?>users/home">Dashboard</a>
-</li>
-<?php }?>
-<li class="scroll"><a href="#guidelines">Guidelines</a></li>
-<?php if(!$this->Session->check('User.email_address')){?>
-<li>
-<a href="<?php echo $this->webroot;?>users/login">Sign in</a>
-</li>
-<?php }?>
-<li class="scroll"><a href="#contact2">Contact</a></li>
+<a class="navbar-brand" href="<?php $this->webroot;?>"> <img alt="Coson-img" class="hidden-xs"/>
+<span>Coson</span></a>
+
+<!-- user dropdown starts -->
+<div class="btn-group pull-right">
+<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" id="dropdownMenu">
+<i class="fa fa-user"></i><span class="hidden-sm hidden-xs"> <?php
+$username = $this->Session->read('User.email_address');
+if(isset($username)){echo $username;}?></span>
+<span class="caret"></span>
+</button>
+<ul class="dropdown-menu" role="menu"  aria-labelledby="dropdownMenu">
+<li role="presentation"><a class="link" role="menuitem" href="<?php echo $this->webroot;?>users/profile">Profile</a></li>
+<li role="presentation"><a class="link" role="menuitem" href="<?php $this->webroot;?>users/changePassword">Change Password</a></li>
+<li class="divider"></li>
+<li role="presentation"><a class="link" role="menuitem" href="<?php echo $this->webroot;?>users/logout">Logout</a></li>
 </ul>
 </div>
 </div>
-</nav>
-</header>
-<section id="main-slider">
-<div class="owl-carousel">
-<div class="item" style="background-image: url(<?php echo $this->webroot;?>img/slider/slide1.jpg);">
-<div class="slider-inner">
-<div class="container">
-<div class="row">
-<div class="col-sm-6">
-<div class="carousel-content">
-<h2>COSON Licensing Application Portal <span>[CLAP]</span></h2>
-<h4 style='color:white; line-height: 25px;'>Music is an intellectual property and the playing of music in a business or public setting without a music copyright licence is unlawful which can lead to huge damages for copyright infringement.</h4>
+</div>
+<!-- user dropdown ends -->
+
 
 </div>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="item" style="background-image: url(<?php echo $this->webroot;?>img/slider/slide2.jpg);">
-<div class="slider-inner">
-<div class="container">
+<!-- topbar ends -->
+<div class="ch-container">
 <div class="row">
-<div class="col-sm-6">
-<div class="carousel-content">
-<h2>Get Your Music License from [CLAP]</h2>
-<h4 style='color:white; line-height: 25px;'>In order to make it easy and stress free for users of music to get the licence required to legally play music in their business environment and facilities and pay for the use of the music without leaving the comfort of their businesses, COSON welcomes you to CLAP! the easy to use licensing portal. </h4>
-
+<!-- left menu starts -->
+<div class="col-sm-2 col-lg-2">
+<div class="sidebar-nav">
+<div class="nav-canvas">
+<div class="nav-sm nav nav-stacked">
 </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="cta" class="wow fadeIn">
-<div class="container">
-<div class="row">
-<div class="col-sm-9">
-<h2>Welcome to <span>COSON Licensing Application Portal [CLAP]</span> </h2><h3>The easy to use licensing portal</h3>
-<p style='color:#454545;'>A few clicks on this portal and in less than five minutes, you are on your way to complying with the law and obtaining a music copyright licence. The COSON music copyright licence gives you the freedom to play both local and foreign music in your business as you like, for your enjoyment and that of your customers.
-            <br><br>The royalty collected from the licensing is distributed to those who make the music.
-             By obtaining a music copyright licence, you make it possible for those who make good music to make more good music for you to enjoy.</p>
-</div>
-<div class="col-sm-3 text-right">
-<button class="btn btn-lg animated rubberBand" data-toggle="modal" data-target="#signUpModal">Get license</button>
-</div>
-</div>
-</div>
-</section>
-<section id="guidelines">
-<div class="container" style='color:#454545;'>
-<div class="section-header">
-<h2 class="section-title text-center wow fadeInDown">Follow the Easy Steps</h2>
-<!-- <p class="text-center wow fadeInDown">Easy steps to get a COSON music copyright licence and to save your business from legal palaver</p> -->
-</div>
-<div class="row">
-<div class="col-sm-6 wow fadeInLeft">
-<img class="img-responsive" src="<?php echo $this->webroot;?>img/grid1-music.jpg" alt="">
-</div>
-<div class="col-sm-6">
-<div class="media service-box wow fadeInRight">
-<div class="pull-left">
-<i class="fa fa-line-chart"></i>
-</div>
-<div class="media-body">
-<h4 class="media-heading">Your Information</h4>
-<p><li>Click on the <strong><strong> Get License</strong> </strong> button above.</li>
-<li>Enter your details in the form provided.</li>
-<li>Use the "Next" and "Previous" buttons to navigate through the steps.</li></p>
-</div>
-</div>
-<div class="media service-box wow fadeInRight">
-<div class="pull-left">
-<i class="fa fa-cubes"></i>
-</div>
-<div class="media-body">
-<h4 class="media-heading">License Category</h4>
-<p><li>Choose your license category from a displayed list of categories.</li>
-<li>Enter the parameters required for your selected category.<</li>
-<li>You can only proceed to the next step if you have completely entered the parameters for your chosen category.</li></p>
-</div>
-</div>
-<div class="media service-box wow fadeInRight">
-<div class="pull-left">
-<i class="fa fa-pie-chart"></i>
-</div>
-<div class="media-body">
-<h4 class="media-heading">Purchase Summary</h4>
-<p><li>This is the last step for purchasing your license with <strong>CLAP</strong>.</li>
-<li>It shows the summary of your license purchase before proceeding to payment. </li>
-<li>A license ID will be generated from your selected category and date of renewal.</li></p>
-</div>
-</div>
-
-</div>
-</div>
-</div>
-</section>
-<div class="container">
-<div class="section-header" id='contact2'>
-<h2 class="section-title text-center wow fadeInDown">Get in Touch</h2>
-<p class="text-center wow fadeInDown">Office Address:<br>
-25, Omodara Street
-Awuse Estate, Opebi
-Ikeja, Lagos, Nigeria<br>
-Phone: 08174590246,  08174590240,08174590255, 08174590253<br>
-Email: info@cosonng.com<br></p>
-</div>
-</div>
-</section>
- 
- <center>
-<footer id="footer">
-<div class="container">
-<div class="row">
-
-<div class="col-sm-6">
-<ul class="social-icons">
-<li><a href="facebook.com/COSON.Nigeria"><i class="fa fa-facebook"></i></a></li>
-<li><a href="twitter.com/@COSONNG"><i class="fa fa-twitter"></i></a></li>
-<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-
+<div class="" id="main">
+<ul class="nav nav-pills nav-stacked main-menu">
+<!--  <li class="nav-header">Main</li> -->
+<li><a class="link" href="<?php echo $this->webroot;?>users/home"><span> Main</span></a>
+</li>
+<li><a class="link" href="<?php echo $this->webroot;?>users/viewTransactions"><span> Purchases History</span></a>
+</li>
+<li><a class="link" href="<?php echo $this->webroot;?>users/profile"><span> Profile</span></a>
+</li>
+<li><a class="link" href="<?php echo $this->webroot;?>users/changePassword"><span> Change Password</span></a>
+</li>
+<li><a class="link" data-toggle="modal" data-target="#sign" style="cursor:pointer;"><span> Get your licence </span></a></li>
+<li><a class="link" href="<?php echo $this->webroot;?>users/logout"><span> Log out</span></a>
+</li>
 </ul>
 </div>
-
 </div>
 </div>
-</footer>
-</center>
-<br>
-<center><h5> Powered By <a href='http://www.playspread.com'>Playspread</a></h5></center>
+</div>
+<!--/span-->
+<!-- left menu ends -->
+<div class="container">
+<div class="row">
+<div class="col-md-10">
+<form action="<?php echo $this->webroot;?>users/updateProfile" method="POST">    
+<div id="content" class="">
+<!-- content starts -->
+<?php $error = $this->Flash->render('errorUpdate');
+$success = $this->Flash->render('successUpdate');
+$duplicate = $this->Flash->render('errorDuplicate'); ?>
+<?php if(isset($error)){
+  echo "<div class='alert alert-danger alert-dismissable'>";
+    echo "<p>$error</p>";
+    echo "</div>";
+    }?>
+    <?php if(isset($success)){
+  echo "<div class='alert alert-success alert-dismissable'>";
+    echo "<p>$success</p>";
+    echo "</div>";
+    }?>
+        <?php if(isset($duplicate)){
+  echo "<div class='alert alert-danger alert-dismissable'>";
+    echo "<p>$duplicate</p>";
+    echo "</div>";
+    }?>
+    <div class="form-group">
+        <div class="row">
+        <label for="company_name" class="control-label col-md-4">Company Name   : </label>
+            <div class="col-md-5">
+                <input type="text" name="data[User][company_name]" class="form-control" value="<?php if(isset($company_name)){ echo $company_name;} else echo "";?>">
+            </div>
+        </div>
+    </div>
+     <div class="form-group">
+        <div class="row">
+        <label for="contact_person" class="control-label col-md-4">Contact Person   : </label>
+            <div class="col-md-5">
+              <input type="text" name="data[User][contact_person]" class="form-control" value="<?php if(isset($company_name)){ echo $contact_person;} else echo "";?>">
+            </div>
+        </div>
+        </div>
+   <div class="form-group">
+        <div class="row">
+        <label for="contact_person" class="control-label col-md-4">Phone number   : </label>
+            <div class="col-md-5">
+              <input type="text" name="data[User][phone_number]" class="form-control" value="<?php if(isset($company_name)){ echo $phone_number;} else echo "";?>">
+            </div>
+        </div>
+        </div>
+<div class="form-group">
+        <div class="row">
+        <label for="email_address" class="control-label col-md-4">Email Address   : </label>
+            <div class="col-md-5">
+               <input type="text" name="data[User][email_address]" class="form-control" value="<?php if(isset($company_name)){ echo $email_address;} else echo "";?>">
+            </div>
+        </div>
+        </div>
+<!--         <div class="form-group">
+        <div class="row">
+        <label for="password" class="control-label col-md-4">Password   : </label>
+            <div class="col-md-5">
+               <input type="password" id="password-1" name="data[User][password]" class="form-control" placeholder="Enter your password">
+            </div>
+             <span class="help-block showError" style="color:red; display:none">Passwords do not match</span>
+             <span class="help-block showEmpty" style="color:red; display:none">Passwords can not be blank</span>
+        </div>
+        </div> -->
+       <!--  <div class="form-group">
+        <div class="row">
+        <label for="contact_person" class="control-label col-md-4">Confim Password   : </label>
+            <div class="col-md-5">
+               <input type="password" id="password-2" class="form-control" placeholder="Confirm your password">
+            </div>
+            <span class="help-block showError" style="color:red; display:none">Passwords do not match</span>
+            <span class="help-block showEmpty" style="color:red; display:none">Passwords can not be blank</span>
+        </div>
+        </div> -->
+    <button class="btn btn-primary" id="updte" type="submit">Update</button>
+<!-- content ends -->
+</div><!--/#content.col-md-0-->
+</form>
+</div>
+</div>
+</div>
+</div><!--/fluid-row-->
 
-<!--The Sign up Modal-->
-<div class="modal fade" id="signUpModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+
+<div class="modal fade" id="sign" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 <div class="modal-dialog">
 <div class="modal-content">
 <div class="modal-header">
 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
 &times;</button>
+<h5 class="panel-title"> Get your licence from Coson Licencing Application Portal</h5>
 </div>
 <div class="modal-body">
-<h4 style='text-align:left;'>Easy steps to get a COSON music copyright licence and save your business from legal palaver</h4>
-<?php if(!$this->Session->check('User.email_address')){?>
-<!-- <p style="text-align:center;">Already a user?  <a data-toggle="modal" data-target="#signInModal" data-dismiss="modal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="color:#347c17;">Sign In</a></p> -->
-<p style="text-align:center;">Already a user?  <a href="<?php echo $this->webroot;?>users/login" style="color:#347c17;">Sign In</a></p>
-<?php } else{
-echo "<h3 style='text-align:center;'>Welcome Back!</h3>";
-}?>
 
-<form role="form" action="<?php echo $this->webroot;?>users/signUp" method="post" id="myForm" class="f1">
+<h3 style='text-align:center;'>Welcome Back!</h3>
+
+<form role="form" action="<?php echo $this->webroot;?>users/returnUser" method="post" id="licence" class="f1">
 
 <fieldset>
-    <h4>Your Company and Personal Information </h4>
-    <span id="test"></span>
+<h4>Your Company and Personal Information </h4>
   
     <div class="form-group">
         <label class="sr-only" for="f1-company-name">Company Name</label>
-        <input type="text" placeholder="Company or Individual name..." class="f1-company-name form-control" id="company_name" name="data[User][company_name]" value="<?php if($this->Session->check('User.company_name')){ $name = $this->Session->read('User.company_name'); echo $name;}?>">
+        <input type="text" disabled="disabled" class="f1-company-name form-control" id="company_name"  value="<?php if($this->Session->check('User.company_name')){ $name = $this->Session->read('User.company_name'); echo $name;}?>">
     </div>
     <div class="form-group">
         <label class="sr-only" for="f1-contact-person">Contact Person</label>
-        <input type="text" placeholder="Contact Person..." class="f1-contact-person form-control" id="contact_person" name="data[User][contact_person]" value="<?php if($this->Session->check('User.contact_person')){ $contact_person = $this->Session->read('User.contact_person'); echo $contact_person;}?>">
+        <input type="text" disabled="disabled" class="f1-contact-person form-control" id="contact_person" value="<?php if($this->Session->check('User.contact_person')){ $contact_person = $this->Session->read('User.contact_person'); echo $contact_person;}?>">
     </div>
 
     <div class="form-group">
         <label class="sr-only" for="f1-email-address">Email address</label>
-        <input type="email" autocomplete="off" placeholder="Email address..." class="f1-last-name form-control" id="email_address" name="data[User][email_address]" value="<?php if($this->Session->check('User.email_address')){ $email = $this->Session->read('User.email_address'); echo $email;}?>">
-        <span id="showEmailResponseBefore" style="color:red;"></span>
-        <span class="showResponse" style="color:red;"></span>
+        <input type="email" disabled="disabled" class="f1-last-name form-control" id="email_address" value="<?php if($this->Session->check('User.email_address')){ $email = $this->Session->read('User.email_address'); echo $email;}?>">
     </div>
     <div class="form-group">
         <label class="sr-only" for="f1-phone-number">Phone Number</label>
-        <input type="number" placeholder="Phone number..." class="f1-last-name form-control" id="phone_number" name="data[User][phone_number]" value="<?php if($this->Session->check('User.phone_number')){ $phone_number = $this->Session->read('User.phone_number'); echo $phone_number;}?>">
+        <input type="number" disabled="disabled" class="f1-last-name form-control" id="phone_number" value="<?php if($this->Session->check('User.phone_number')){ $phone_number = $this->Session->read('User.phone_number'); echo $phone_number;}?>">
     </div>
-    <div class="form-group">
-        <label class="sr-only" for="f1-last-name">Password</label>
-        <input type="password" name="data[User][password]" placeholder="Password..." class="f1-password form-control" id="password-1">
-    </div>
-    <div class="form-group">
-        <label class="sr-only" for="f1-last-name">Confirm Password</label>
-        <input type="password" placeholder="Confirm Password..." class="f1-password form-control" id="password-2">
-    </div>
-    <div class="f1-buttons">
-        <button type="button" class="btn btn-next" id="stopEmail">Next <i class="fa fa-arrow-right"></i> </button>
-    </div>
-    <span id="showEmailProcess" style="color:red; display:none"></span>
+<div class="f1-buttons" style="text-align:center;">
+<button type="button" class="btn btn-next">Next <i class="fa fa-arrow-right"></i> </button>
+</div>
 </fieldset>
-
 <fieldset>
 <div class="row" id="selectCategory">
 <h4>Please select your category</h4>
@@ -351,7 +315,7 @@ echo "<h3 style='text-align:center;'>Welcome Back!</h3>";
 <div class="row divAmountSpaceClubs" style="display:none;">
 <div class="form-group">
 <div class="col-md-5">
-<div class="numberCircle"">
+<div class="numberCircle">
 <div class="height_fix"></div>
 <div class="content" id="amountSpaceClubs"></div>
 </div>
@@ -359,7 +323,7 @@ echo "<h3 style='text-align:center;'>Welcome Back!</h3>";
 </div>
 <div class="form-group" id="clubsHowMany" style="display:none;">
 <div class="col-md-7">
-  <label class="control-label">How many <span class="userCat">Category</span> do you have?</label>
+<label class="control-label">How many <span class="userCat">Category</span> do you have?</label>
 <input type="number" value="1" min="1" required name="" id="clubsNumber" class="form-control" />
 </div>
 </div>
@@ -416,13 +380,13 @@ echo "<h3 style='text-align:center;'>Welcome Back!</h3>";
 </div>
 <div class="form-group" id="roadshowsHowMany" style="display:none;">
 <div class="col-md-7">
-  <label class="control-label">How many <span class="userCat">Category</span> (s) do you have?</label>
+<label class="control-label">How many <span class="userCat">Category</span> (s) do you have?</label>
 <input type="number" value="1" min="1" required name="" id="roadshowsNumber" class="form-control" />
 </div>
 </div>
 </div><!--End row-->
 <div class="row">
-  <div class="col-md-8">
+<div class="col-md-8">
 <p>Notice : Please note that <strong><b>Daily</b></strong> is the default plan for Roadshows</p>
 </div>
 </div>
@@ -437,7 +401,7 @@ echo "<h3 style='text-align:center;'>Welcome Back!</h3>";
 <div class="row">
 <div class="form-group">
 <label class="control-label col-md-5">Amount per person/day :</label>
-<div class="col-md-7">
+  <div class="col-md-7">
 <div class="input-group">
 <span class="input-group-addon">₦</span>
 <input type="number" name="" id="salonDefaultAmount" class="form-control" readonly value="10.73"/></div>
@@ -482,13 +446,13 @@ echo "<h3 style='text-align:center;'>Welcome Back!</h3>";
 <div class="col-md-5">
 <div class="numberCircle">
 <div class="height_fix"></div>
-<div class="content" id="amountSpaceSalon"></div>
+  <div class="content" id="amountSpaceSalon"></div>
 </div>
 </div>
 </div>
 <div class="form-group" id="salonHowMany" style="display:none;">
 <div class="col-md-7">
-  <label class="control-label">How many <span class="userCat">Category</span> (s) do you have?</label>
+<label class="control-label">How many <span class="userCat">Category</span> (s) do you have?</label>
 <input type="number" value="1" min="1" required name="" id="salonNumber" class="form-control" />
 </div>
 </div>
@@ -539,7 +503,7 @@ echo "<h3 style='text-align:center;'>Welcome Back!</h3>";
 </div>
 <div class="form-group" id="hotelsHowMany" style="display:none;">
 <div class="col-md-7">
-  <label class="control-label">How many <span class="userCat">Category</span> (s) do you have?</label>
+<label class="control-label">How many <span class="userCat">Category</span> (s) do you have?</label>
 <input type="number" value="1" min="1" required name="" id="hotelsNumber" class="form-control" />
 </div>
 </div>
@@ -547,7 +511,7 @@ echo "<h3 style='text-align:center;'>Welcome Back!</h3>";
 <!-- </div>End row -->
 
 <div class="row">
-    <div class="form-group">
+<div class="form-group">
 <label class="control-label col-md-4">Room Rates :</label>
 <div class="col-md-4" id="roomRates"></div>
 </div>
@@ -555,14 +519,14 @@ echo "<h3 style='text-align:center;'>Welcome Back!</h3>";
 
 
 <div class="row">
-    <div class="form-group">
+<div class="form-group">
 <label class="control-label col-md-4">Bar and Restaurants Rate :</label>
 <div class="col-md-4" id="barAndResRates"></div>
 </div>
 </div>
 
 <div class="row">
-    <div class="form-group">
+<div class="form-group">
 <label class="control-label col-md-4">Event Hall Rate :</label>
 <div class="col-md-4" id="eventHallRates"></div>
 </div>
@@ -610,7 +574,7 @@ echo "<h3 style='text-align:center;'>Welcome Back!</h3>";
 </div>
 <div class="form-group" id="exhibitionHowMany" style="display:none;">
 <div class="col-md-7">
-  <label class="control-label">How many <span class="userCat">Category</span> (s) do you have?</label>
+<label class="control-label">How many <span class="userCat">Category</span> (s) do you have?</label>
 <input type="number" value="1" min="1" required name="" id="exhibitionNumber" class="form-control" />
 </div>
 </div>
@@ -657,7 +621,7 @@ echo "<h3 style='text-align:center;'>Welcome Back!</h3>";
 <div class="row" id="forFitnessYears" style="display:none;">
 <div class="row">
 <div class="form-group">
-<label class="control-label col-md-5">How many years do you want to subscribe to?</label>
+ <label class="control-label col-md-5">How many years do you want to subscribe to?</label>
 <div class="col-md-7">
 <input type="number" required name="" min="1" id="fitnessNumberOfYears" class="form-control" value="1" />
 </div>
@@ -704,7 +668,7 @@ echo "<h3 style='text-align:center;'>Welcome Back!</h3>";
 </div>
 </div>
 <div class="form-group" id="fitnessHowMany" style="display:none;">
-  <label class="control-label col-md-5">How many <span class="userCat">Category</span> (s) do you have?</label>
+<label class="control-label col-md-5">How many <span class="userCat">Category</span> (s) do you have?</label>
 <div class="col-md-7">
 <input type="number" value="1" min="1" required name="" id="fitnessNumber" class="form-control" />
 </div>
@@ -768,7 +732,7 @@ echo "<h3 style='text-align:center;'>Welcome Back!</h3>";
 <div class="col-md-5">
 <div class="numberCircle">
 <div class="height_fix"></div>
-<div class="content" id="amountSpaceEvent"></div>
+  <div class="content" id="amountSpaceEvent"></div>
 </div>
 </div>
 </div>
@@ -784,8 +748,8 @@ echo "<h3 style='text-align:center;'>Welcome Back!</h3>";
 </div>
 </div><!--End row-->
 <div class="row" id="eventHowMany" style="display:none;">
-  <label class="control-label col-md-5">How many <span class="userCat">Category</span> (s) do you have?</label>
-  <div class="col-md-7">
+<label class="control-label col-md-5">How many <span class="userCat">Category</span> (s) do you have?</label>
+<div class="col-md-7">
 <input type="number" value="1" min="1" required name="" id="eventNumber" class="form-control" />
 </div>
 </div>
@@ -821,7 +785,7 @@ echo "<h3 style='text-align:center;'>Welcome Back!</h3>";
 
 <div class="f1-buttons">
 <button type="button" class="btn btn-previous">Previous <i class="fa fa-arrow-left"></i> </button>
-<button type="button" class="btn btn-next" id="divAmountSpaceEventNext" style="display:none;">Next <i class="fa fa-arrow-right"></i> </button>
+  <button type="button" class="btn btn-next" id="divAmountSpaceEventNext" style="display:none;">Next <i class="fa fa-arrow-right"></i> </button>
 </div>
 </div>
 
@@ -888,15 +852,15 @@ echo "<h3 style='text-align:center;'>Welcome Back!</h3>";
 </div>
 
 <div class="row"  style="display:none;" id="resHowMany">
-  <div class="form-group">
-  <label class="control-label col-md-5">How many <span class="userCat">Category</span> (s) do you have?</label>
+<div class="form-group">
+<label class="control-label col-md-5">How many <span class="userCat">Category</span> (s) do you have?</label>
 <div class="col-md-7">
 <input type="number" value="1" min="1" required name="" id="resNumber" class="form-control" />
 </div>
 </div>
 </div>
 <br />
-</div>
+    </div>
 <!--End this will show only when restaurants option is selected-->
 
 <!--This will show only when malls is selected-->
@@ -944,8 +908,8 @@ echo "<h3 style='text-align:center;'>Welcome Back!</h3>";
 </div>
 </div>
 <div class="row"  style="display:none;" id="mallsHowMany">
-  <div class="form-group">
-  <label class="control-label col-md-5">How many <span class="userCat">Category</span> (s) do you have?</label>
+<div class="form-group">
+<label class="control-label col-md-5">How many <span class="userCat">Category</span> (s) do you have?</label>
 <div class="col-md-7">
 <input type="number" value="1" min="1" required name="" id="mallsNumber" class="form-control" />
 </div>
@@ -1000,9 +964,9 @@ echo "<h3 style='text-align:center;'>Welcome Back!</h3>";
 </div>
 </div>
 <div class="row"  style="display:none;" id="retailHowMany">
-  <div class="form-group">
-  <label class="control-label col-md-5">How many <span class="userCat">Category</span> (s) do you have?</label>
-<div class="col-md-7">
+<div class="form-group">
+<label class="control-label col-md-5">How many <span class="userCat">Category</span> (s) do you have?</label>
+ <div class="col-md-7">
 <input type="number" value="1" min="1" required name="" id="retailNumber" class="form-control" />
 </div>
 </div>
@@ -1056,9 +1020,9 @@ echo "<h3 style='text-align:center;'>Welcome Back!</h3>";
 </div>
 </div>
 <div class="row"  style="display:none;" id="bankingHowMany">
-  <div class="form-group">
-  <label class="control-label col-md-5">How many <span class="userCat">Category</span> (s) do you have?</label>
-<div class="col-md-7">
+<div class="form-group">
+<label class="control-label col-md-5">How many <span class="userCat">Category</span> (s) do you have?</label>
+  <div class="col-md-7">
 <input type="number" value="1" min="1" required name="" id="bankingNumber" class="form-control" />
 </div>
 </div>
@@ -1111,9 +1075,9 @@ echo "<h3 style='text-align:center;'>Welcome Back!</h3>";
 </div>
 </div>
 <div class="row"  style="display:none;" id="officeHowMany">
-  <div class="form-group">
-  <label class="control-label col-md-5">How many <span class="userCat">Category</span> (s) do you have?</label>
-<div class="col-md-7">
+<div class="form-group">
+<label class="control-label col-md-5">How many <span class="userCat">Category</span> (s) do you have?</label>
+ <div class="col-md-7">
 <input type="number" value="1" min="1" required name="" id="officeNumber" class="form-control" />
 </div>
 </div>
@@ -1157,9 +1121,9 @@ echo "<h3 style='text-align:center;'>Welcome Back!</h3>";
 </div>
 <div class="f1-buttons">
 <button type="button" class="btn btn-previous" id="specialPrevTrans" style="display:none;">Previous <i class="fa fa-arrow-left"></i> </button>
-</button>
-</div>
-<div class="row" id="fieldsetTaxi" style="display:none;">
+  </button>
+  </div>
+  <div class="row" id="fieldsetTaxi" style="display:none;">
 <div class="row">
 <div class="form-group">
 <label class="control-label col-md-5">Amount per person :</label>
@@ -1222,7 +1186,7 @@ echo "<h3 style='text-align:center;'>Welcome Back!</h3>";
 </div>
 <div class="form-group" id="taxiHowMany" style="display:none;">
 <div class="col-md-7">
-  <label class="control-label">How many <span class="vehicle">vehicle</span> (s) do you have?</label>
+<label class="control-label">How many <span class="vehicle">vehicle</span> (s) do you have?</label>
 <input type="number" value="1" min="1" required name="" id="taxiNumber" class="form-control" />
 </div>
 </div>
@@ -1306,7 +1270,7 @@ echo "<h3 style='text-align:center;'>Welcome Back!</h3>";
 </div>
 <div class="form-group" id="bigBusHowMany" style="display:none;">
 <div class="col-md-7">
-  <label class="control-label">How many <span class="vehicle">vehicle</span> (s) do you have?</label>
+<label class="control-label">How many <span class="vehicle">vehicle</span> (s) do you have?</label>
 <input type="number" value="1" min="1" required name="" id="bigBusNumber" class="form-control" />
 </div>
 </div>
@@ -1378,7 +1342,7 @@ echo "<h3 style='text-align:center;'>Welcome Back!</h3>";
 </div>
 <div class="form-group" id="busHowMany" style="display:none;">
 <div class="col-md-7">
-  <label class="control-label">How many <span class="vehicle">vehicle</span> (s) do you have?</label>
+<label class="control-label">How many <span class="vehicle">vehicle</span> (s) do you have?</label>
 <input type="number" value="1" min="1" required name="" id="busNumber" class="form-control" />
 </div>
 </div>
@@ -1452,7 +1416,7 @@ echo "<h3 style='text-align:center;'>Welcome Back!</h3>";
 </div>
 <div class="form-group" id="miniCoachesHowMany" style="display:none;">
 <div class="col-md-7">
-  <label class="control-label">How many <span class="vehicle">vehicle</span> (s) do you have?</label>
+<label class="control-label">How many <span class="vehicle">vehicle</span> (s) do you have?</label>
 <input type="number" value="1" min="1" required name="" id="miniCoachesNumber" class="form-control" />
 </div>
 </div>
@@ -1471,7 +1435,7 @@ echo "<h3 style='text-align:center;'>Welcome Back!</h3>";
 <div class="input-group">
 <span class="input-group-addon">₦</span>
 <input type="text" id="luxiriousBusesDefaultAmount" class="form-control" readonly value="35.60"/></div>
-<div class="help-text"><i class="fa fa-info-circle"></i> This is the default amount per passenger</div>
+  <div class="help-text"><i class="fa fa-info-circle"></i> This is the default amount per passenger</div>
 </div>
 </div><!--End form-group-->
 </div><!--End row-->
@@ -1524,7 +1488,7 @@ echo "<h3 style='text-align:center;'>Welcome Back!</h3>";
 </div>
 <div class="form-group" id="luxiriousBusesHowMany" style="display:none;">
 <div class="col-md-7">
-  <label class="control-label">How many <span class="vehicle">vehicle</span> (s) do you have?</label>
+<label class="control-label">How many <span class="vehicle">vehicle</span> (s) do you have?</label>
 <input type="number" value="1" min="1" required name="" id="luxiriousBusesNumber" class="form-control" />
 </div>
 </div>
@@ -1597,7 +1561,7 @@ echo "<h3 style='text-align:center;'>Welcome Back!</h3>";
 </div>
 <div class="form-group" id="coorporateVehiclesHowMany" style="display:none;">
 <div class="col-md-7">
-  <label class="control-label">How many <span class="vehicle">vehicle</span> (s) do you have?</label>
+<label class="control-label">How many <span class="vehicle">vehicle</span> (s) do you have?</label>
 <input type="number" value="1" min="1" required name="" id="coorporateVehiclesNumber" class="form-control" />
 </div>
 </div>
@@ -1655,7 +1619,7 @@ echo "<h3 style='text-align:center;'>Welcome Back!</h3>";
 <div id="">
 <label class="control-label col-md-5">How many months do you want to subscribe to?</label>
 <div class="col-md-7">
-  <input type="number" required name="" min="3" id="generalDefaultMonths" class="form-control" value="3" /></div>
+<input type="number" required name="" min="3" id="generalDefaultMonths" class="form-control" value="3" /></div>
 </div>
 </div><!--End row-->
 </div><!--End form-group-->
@@ -1663,15 +1627,15 @@ echo "<h3 style='text-align:center;'>Welcome Back!</h3>";
 <div class="row divAmountSpaceGeneral" style="display:none;">
 <div class="form-group">
 <div class="col-md-5">
-  <div class="numberCircle">
-    <div class="height_fix"></div>
-    <div class="content" id="amountSpaceGeneral"></div>
-  </div>
+<div class="numberCircle">
+<div class="height_fix"></div>
+<div class="content" id="amountSpaceGeneral"></div>
+</div>
 </div>
 </div>
 <div class="form-group" id="generalHowMany" style="display:none;">
 <div class="col-md-7">
-  <label class="control-label">How many <span class="vehicle">vehicle</span> (s) do you have?</label>
+<label class="control-label">How many <span class="vehicle">vehicle</span> (s) do you have?</label>
 <input type="number" value="1" min="1" required name="" id="generalNumber" class="form-control" />
 </div>
 </div>
@@ -1684,145 +1648,134 @@ echo "<h3 style='text-align:center;'>Welcome Back!</h3>";
 </div>
 </fieldset>
 
-<fieldset>
-<div class="row">
-<div class="form-group">
-<h4 style="text-align:center;">Summary of your License Purchase</h4>
-<div class="row">
-<label class="control-label col-md-5">Licence Id :</label> <div id="transId" class="col-md-6">
-<span id="cat"></span><span id="renew"></span><span id="rand"><?php if(isset($getNumber)){echo $getNumber;}?></span>
-</div>
-<input type="hidden" name="data[Payment][licence_id]" value="" id="inputTransId" />
-</div>
-<div class="row">
-<label class="control-label col-md-5">Company Name :</label> <div class="col-md-6" id="summaryName">
+    <fieldset>
+        <div class="row">
+            <div class="form-group">
+                <h4 style="text-align:center;">Summary of your License Purchase</h4>
+                <div class="row">
+                    <label class="control-label col-md-5">Licence Id :</label> <div id="transId" class="col-md-6">
+                    <span id="cat"></span><span id="renew"></span><span id="rand"><?php if(isset($getNumber)){echo $getNumber;}?></span>
+                    </div>
+                    <input type="hidden" name="data[Payment][licence_id]" value="" id="inputTransId" />
+                </div>
+                <div class="row">
+                    <label class="control-label col-md-5">Company Name :</label> <div class="col-md-6" id="summaryName">
 
-</div>
-</div>
-<div class="row">
-<label class="control-label col-md-5">Contact Person :</label> <div class="col-md-6" id="summaryContact">
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="control-label col-md-5">Contact Person :</label> <div class="col-md-6" id="summaryContact">
 
-</div>
-</div>
-<div class="row">
-<label class="col-md-5 control-label">Email Address :</label> <div class="col-md-6" id="summaryEmail">
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-md-5 control-label">Email Address :</label> <div class="col-md-6" id="summaryEmail">
 
-</div>
-</div>
-<div class="row">
-<label class="col-md-5 control-label">Phone Number :</label> <div class="col-md-6" id="summaryPhone">
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-md-5 control-label">Phone Number :</label> <div class="col-md-6" id="summaryPhone">
 
-</div>
-</div>
-<div class="row">
-<label class="col-md-5 control-label">Licence Category :</label> <div class="col-md-6 summaryCategory" id="summaryCategory">
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-md-5 control-label">Licence Category :</label> <div class="col-md-6 summaryCategory" id="summaryCategory">
 
-</div>
-<input type="hidden" name="data[Payment][licence_category]" value="" id="inputCategory" />
-</div>
-<div class="row" id="numberOfVehicle" style="display:none;">
-<label class="col-md-5 control-label">Number of <span class="vehicle"> vehicle</span>(s) :</label> <div class="col-md-6 summaryVehiclesNumber" id="summaryVehiclesNumber">
+                    </div>
+                    <input type="hidden" name="data[Payment][licence_category]" value="" id="inputCategory" />
+                </div>
+                <div class="row" id="numberOfVehicle" style="display:none;">
+                    <label class="col-md-5 control-label">Number of <span class="vehicle"> vehicle</span>(s) :</label> <div class="col-md-6 summaryVehiclesNumber" id="summaryVehiclesNumber">
 
-</div>
-<input type="hidden" name="data[Payment][number_of_vehicles]" value="" id="inputVehiclesNumber" />
-</div>
-<div class="row" id="numberOfCategory" style="display:none;">
-<label class="col-md-5 control-label">Number of <span class="userCat"> Category</span>(s) :</label> <div class="col-md-6 summaryUserCategoryNumber" id="summaryUserCategoryNumber">
+                    </div>
+                    <input type="hidden" name="data[Payment][number_of_vehicles]" value="" id="inputVehiclesNumber" />
+                </div>
+                <div class="row" id="numberOfCategory" style="display:none;">
+                    <label class="col-md-5 control-label">Number of <span class="userCat"> Category</span>(s) :</label> <div class="col-md-6 summaryUserCategoryNumber" id="summaryUserCategoryNumber">
 
-</div>
-<input type="hidden" name="data[Payment][number_of_centres]" value="" id="inputUserCategoryNumber" />
-</div>
-<div class="row">
-<label class="col-md-5 control-label">Subcription Plan :</label> <div class="col-md-6 summaryPlan" id="summaryPlan">
+                    </div>
+                    <input type="hidden" name="data[Payment][number_of_centres]" value="" id="inputUserCategoryNumber" />
+                </div>
+                <div class="row">
+                    <label class="col-md-5 control-label">Subcription Plan :</label> <div class="col-md-6 summaryPlan" id="summaryPlan">
 
-</div>
-<input type="hidden" name="data[Payment][subscription_plan]" value="" id="inputPlan" />
-</div>
-<div class="row">
-<label class="col-md-5 control-label">Duration of Plan :</label> <div class="col-md-6 summaryDuration" id="summaryDuration">
+                    </div>
+                    <input type="hidden" name="data[Payment][subscription_plan]" value="" id="inputPlan" />
+                </div>
+                <div class="row">
+                    <label class="col-md-5 control-label">Duration of Plan :</label> <div class="col-md-6 summaryDuration" id="summaryDuration">
 
-</div>
-<input type="hidden" name="data[Payment][duration]" value="" id="inputDuration" />
-</div>
-<div class="row">
-<label class="col-md-5 control-label">Renewal Date : </label> <div class="col-md-6 summaryRenewal"></div>
-<input type="hidden" name="data[Payment][renewal_date]" value="" id="inputRenewal" />
-</div>
-</div>
-<div class="row">
-<label class="col-md-5 control-label">Total Amount : </label> <div class="col-md-6 summaryTotal" id="summaryTotal">
-</div>
-<input type="hidden" name="data[Payment][amount_paid]" value="" id="inputAmount" />
-</div>
-<div class="f1-buttons">
-<button type="button" class="btn btn-previous">Previous <i class="fa fa-arrow-left"></i></button>
-<button type="submit" class="btn btn-submit">Make Payment</button>
-</div>
-</div>
-</div>
-</fieldset>
-</form>
-</div>
-</div>
-</div>
-</div>
+                    </div>
+                    <input type="hidden" name="data[Payment][duration]" value="" id="inputDuration" />
+                </div>
+                <div class="row">
+                    <label class="col-md-5 control-label">Renewal Date : </label> <div class="col-md-6 summaryRenewal"></div>
+                    <input type="hidden" name="data[Payment][renewal_date]" value="" id="inputRenewal" />
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-md-5 control-label">Total Amount : </label> <div class="col-md-6 summaryTotal" id="summaryTotal">
+                </div>
+                <input type="hidden" name="data[Payment][amount_paid]" value="" id="inputAmount" />
+            </div>
+            <div class="f1-buttons">
+                <button type="button" class="btn btn-previous">Previous <i class="fa fa-arrow-left"></i></button>
+                <button type="submit" class="btn btn-submit" onclick="submit_form();">Make Payment</button>
+                <img src="<?php echo $this->webroot ?>images/isw.png">
+            </div>
+        </div>
+        </div>
+    </fieldset>
+    </form>
+    </div>
+    </div>
+    </div>
+    </div>
 <!--End Sign up modal-->
 
-  </div>
-</div>
-</div>
-</div>
 
-<!-- Javascript -->
-<!-- AIzaSyB4tZZ-gB75xBw333RtEdjifsnW_ysc61Y -->
+<footer class="row">
+<p class="col-md-9 col-sm-9 col-xs-12 copyright">&copy; Designed by <a class="link" href="http://playspread.com" target="_blank" class="link">Playspread</a> 2016</p>
+</footer>
+
+</div><!--/.fluid-container-->
+
+<!-- external javascript -->
+<script src="<?php echo $this->webroot;?>js/jquery-2.1.1.min.js"></script>
+<script src='<?php echo $this->webroot;?>js/jquery.dataTables.min.js'></script>
+<script src="<?php echo $this->webroot;?>js/charisma.js"></script>
+<script src="<?php echo $this->webroot;?>js/moment.js"></script>
 <script src="http://maps.google.com/maps/api/js?key=AIzaSyCcolYiTocCcfTdQhmmmlPXW9uzWvGj9tk"></script>
-<script src="<?php echo $this->webroot;?>js/owl.carousel.min.js"></script>
-<script src="<?php echo $this->webroot;?>js/mousescroll.js"></script>
-<script src="<?php echo $this->webroot;?>js/smoothscroll.js"></script>
-<script src="<?php echo $this->webroot;?>js/jquery.prettyPhoto.js"></script>
-<script src="<?php echo $this->webroot;?>js/jquery.isotope.min.js"></script>
-<script src="<?php echo $this->webroot;?>js/jquery.inview.min.js"></script>
-<script src="<?php echo $this->webroot;?>js/wow.min.js"></script>
+    <script src="<?php echo $this->webroot;?>js/owl.carousel.min.js"></script>
+    <script src="<?php echo $this->webroot;?>js/mousescroll.js"></script>
+    <script src="<?php echo $this->webroot;?>js/smoothscroll.js"></script>
+    <script src="<?php echo $this->webroot;?>js/jquery.prettyPhoto.js"></script>
+    <script src="<?php echo $this->webroot;?>js/jquery.isotope.min.js"></script>
+    <script src="<?php echo $this->webroot;?>js/jquery.inview.min.js"></script>
+    <script src="<?php echo $this->webroot;?>js/wow.min.js"></script>
+<script src="<?php echo $this->webroot;?>js/bootstrap.min.js"></script>
+<script src="<?php echo $this->webroot;?>js/jquery.iphone.toggle.js"></script>
 <script src="<?php echo $this->webroot;?>js/main.js"></script>
 <script src="<?php echo $this->webroot;?>js/scripts.js"></script>
 <script src="<?php echo $this->webroot;?>js/scripts_transporters.js"></script>
+<script type="text/javascript" src="<?php echo $this->webroot;?>js/webpay.js"></script>
+<script type="text/javascript" src="<?php echo $this->webroot;?>js/cryptojssha512.js"></script>
 
 <script type="text/javascript">
-    
-     $("#email_address").on('input, keyup', function(){
-    var email_address = $('#email_address').val();
-    if(email_address == ''){
-        $("#showEmailResponseBefore").html("");
-        $("#showErrorResponse").html("");
-    }
-           $.ajax({
-            type : "POST",
-            url : '<?php echo $this->webroot;?>users/checkEmail',
-            async : true,
-            cache : false,
-            data :  {email_address : email_address},
-            beforeSend : function(){
-                $("#showEmailResponseBefore").html("Validating email address...");
-            },
-            success : function(response){
-                $("#showEmailResponseBefore").hide();
-                $(".showResponse").html(response);
-                 if(response == 'The email address already exist'){
-                     $("#stopEmail").hide();
-                }
-                else if(response == 'The email address is available'){
-                 $("#stopEmail").show('fast');
-    
-                }
-            }
-        });
 
-});
 
+    jQuery(document).ready(function($) {
+
+        $('#update').click(function(){
+        var email_address = $("#email_address").val();
+        var phone_number = $("phone_number").val();
+        var contact_person = $("contact_person").val();
+        var company_name = $("#company_name").val();
+        if(email_address === '' || phone_number === '' || contact_person === '' || company_name === ''){
+            $(".showError").show('fast');
+        }
+    });
+    });
 </script>
 </body>
-
-
 </html>
-
-

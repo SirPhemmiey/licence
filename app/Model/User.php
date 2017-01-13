@@ -1,13 +1,14 @@
-<?php 
+<?php
 
 /**
-* 
+*
 */
 App::uses('AppModel', 'Model');
 App::uses('SimplePasswordHasher', 'Controller/Component/Auth');
 // App::uses('AuthComponent', 'Controller/Component/Auth');
 class User extends AppModel
 {
+  public $uses = 'User';
    public $validate = array(
     'username' => array(
       'required' => array(
@@ -40,7 +41,7 @@ public $hasMany = array(
       $this->data[$this->alias]['password'] = $passwordHasher->hash(
       $this->data[$this->alias]['password']);
       }
-      // $this->data['Admin']['password'] = 
+      // $this->data['Admin']['password'] =
       // AuthComponent::password($this->data['Admin']['password']);
       //fallback to our parent
       $this->data[$this->alias]['resetkey'] = Security::hash(mt_rand(),'md5',true);

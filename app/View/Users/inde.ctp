@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head> 
+<head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -121,7 +121,7 @@ By obtaining a music copyright licence, you make it possible for those who make 
 
 <div class="row">
 <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3  form-box">
-<!-- <p style="color:white;"><?php 
+<!-- <p style="color:white;"><?php
 $new_date = strtotime("+1day today");
 echo date('d-m-Y', $new_date);?></p> -->
 <div class="row" id="emptyCategory" style="display:none;"></div>
@@ -132,7 +132,7 @@ echo date('d-m-Y', $new_date);?></p> -->
 <div class="modal-content">
 <div class="modal-header">
 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-&times;</button>  
+&times;</button>
 </div>
 <div class="modal-body">
 
@@ -328,7 +328,7 @@ echo "<h3>Welcome Back!</h3>";
 <div class="row divAmountSpaceRoadshows" style="display:none;">
 <div class="form-group">
 <div class="col-md-5">
-<div class="numberCircle"> 
+<div class="numberCircle">
 <div class="height_fix"></div>
 <div class="content" id="amountSpaceRoadshows"></div>
 </div>
@@ -397,7 +397,7 @@ echo "<h3>Welcome Back!</h3>";
 <div class="row divAmountSpaceSalon" style="display:none;">
 <div class="form-group">
 <div class="col-md-4">
-<div class="numberCircle"> 
+<div class="numberCircle">
 <div class="height_fix"></div>
 <div class="content" id="amountSpaceSalon"></div>
 </div>
@@ -441,7 +441,7 @@ echo "<h3>Welcome Back!</h3>";
 <div class="row">
 <div class="form-group">
 <div class="col-md-4">
-<div class="numberCircle"> 
+<div class="numberCircle">
 <div class="height_fix"></div>
 <div class="content" id="amountSpaceHotels"></div>
 </div>
@@ -499,7 +499,7 @@ echo "<h3>Welcome Back!</h3>";
 <div class="row divAmountSpaceExhibition" style="display:none;">
 <div class="form-group">
 <div class="col-md-10">
-<div class="numberCircle"> 
+<div class="numberCircle">
 <div class="height_fix"></div>
 <div class="content" id="amountSpaceExhibition"></div>
 </div>
@@ -959,7 +959,7 @@ echo "<h3>Welcome Back!</h3>";
 <div class="row divAmountSpaceRMSROSE" style="display:none;">
 <div class="form-group">
 <div class="col-md-4">
-<div class="numberCircle"> 
+<div class="numberCircle">
 <div class="height_fix"></div>
 <div class="content" id="amountSpaceRMSROSE"></div>
 </div>
@@ -972,7 +972,7 @@ echo "<h3>Welcome Back!</h3>";
 <div class="f1-buttons">
 <button type="button" class="btn btn-previous">Previous <i class="fa fa-arrow-left"></i> </button>
 <button type="button" class="btn btn-next divAmountSpaceRMSROSE" style="display:none;">Next <i class="fa fa-arrow-right"></i> </button>
-</div>      
+</div>
 </div>
 <!--THIS SECTION IS FOR TRANSPORTERS-->
 <div class="form-group" style="display:none;" id="selectVehicle">
@@ -1497,7 +1497,7 @@ echo "<h3>Welcome Back!</h3>";
 <div class="row">
 <label class="col-md-4 control-label">Email Address :</label> <div class="col-md-8" id="summaryEmail">
 
-</div> 
+</div>
 </div>
 <div class="row">
 <label class="col-md-4 control-label">Phone Number :</label> <div class="col-md-8" id="summaryPhone">
@@ -1551,7 +1551,7 @@ echo "<h3>Welcome Back!</h3>";
 <div class="modal-content">
 <div class="modal-header">
 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-&times;</button>  
+&times;</button>
 </div>
 <div class="modal-title">
 <h3>Welcome! Please sign in</h3>

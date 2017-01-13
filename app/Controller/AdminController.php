@@ -1,6 +1,6 @@
-<?php 
+<?php
 /**
-* 
+*
 */
 
 class AdminController extends AppController
@@ -25,13 +25,15 @@ class AdminController extends AppController
     $this->layout = false;
     if(!$this->Session->check('Admin.email')){
       $this->Flash->error('You do not have access to that location', array('key' => 'loginAuth'));
-      $this->redirect(array('action' =>'login'));
+        $this->redirect(array('controller' => 'users',
+                              'action' =>'login'));
     }
   }
   public function login() {
     $this->layout = false;
     if($this->Session->check('Admin.email')){
-      $this->redirect(array('action' =>'index'));
+        $this->redirect(array('controller' => 'users',
+                              'action' =>'login'));
     }
     if($this->request->is('post')){
       $email = $_POST['email'];
@@ -55,14 +57,16 @@ class AdminController extends AppController
     // $this->Cookie->delete('remember_me');
     $this->Session->destroy();
     $this->Flash->error('You have successfully logged out', array('key' => 'loginOut'));
-    $this->redirect(array('action' => 'login'));
+      $this->redirect(array('controller' => 'users',
+                            'action' =>'login'));
   }
   public function profile()
   {
     $this->layout = false;
     if(!$this->Session->check('Admin.email')){
       $this->Flash->error('You do not have access to that location', array('key' => 'loginAuth'));
-      $this->redirect(array('action' =>'login'));
+        $this->redirect(array('controller' => 'users',
+                              'action' =>'login'));
     }
   }
   public function viewPurchases()
@@ -70,7 +74,8 @@ class AdminController extends AppController
     $this->layout = false;
     if(!$this->Session->check('Admin.email')){
       $this->Flash->error('You do not have access to that location', array('key' => 'loginAuth'));
-      $this->redirect(array('action' =>'login'));
+      $this->redirect(array('controller' => 'users',
+                            'action' =>'login'));
     }
     $this->loadModel('User');
     $this->loadModel('Payment');
@@ -101,7 +106,7 @@ class AdminController extends AppController
   // $email_address = $this->Session->read('User.email_address');
   $query = $this->User->Payment->find('all', $query_options);
   $this->set("users", $query);
-  } 
+  }
   public function forgotPassword(){
     $this->layout = false;
     if($this->request->is('post')){
@@ -111,7 +116,7 @@ class AdminController extends AppController
       $subject = 'Password reset instructions from';
       if(!$data){
         $this->Flash->error('No such email address registered with us', array('key' => 'errorEmailNotReg'));
-        $this->redirect(array('action' =>'forgotPassword'));  
+        $this->redirect(array('action' =>'forgotPassword'));
       }
       else{
         $key = $data['Admin']['resetkey'];
